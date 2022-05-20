@@ -90,6 +90,7 @@ public class MineSweeper extends JFrame {
 
     private void startNewGame() {
         this.game = new Game(cols, rows, 20);
+        label.setText(getLabelText());
         panel.repaint();
     }
 
