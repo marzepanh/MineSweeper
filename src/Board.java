@@ -10,6 +10,7 @@ public class Board {
     private Cell [] [] visibleBoardState;
     private Cell [] [] hiddenBoardState;
     private final List<Coord> bombs = new ArrayList<>();
+    Random r = new Random();
 
     public Board(int cols, int rows,  int bombsAmount) {
         this.size = new Coord(cols, rows);
@@ -25,6 +26,8 @@ public class Board {
     public Cell[][] getVisibleBoardState() {
         return visibleBoardState;
     }
+
+    public Coord getSize() {return size; }
 
     private void initHiddenBoard() {
         initBombs();
@@ -79,7 +82,6 @@ public class Board {
     }
 
     private void initBombs () {
-        Random r = new Random();
         for (int i = 0; i < bombsAmount; i++) {
             Coord bomb = new Coord(r.nextInt(size.getX()), r.nextInt(size.getY()));
             while (bombs.contains(bomb)) {
@@ -88,4 +90,6 @@ public class Board {
             bombs.add(bomb);
         }
     }
+
+    public int getBombsAmount() {return bombsAmount;}
 }
